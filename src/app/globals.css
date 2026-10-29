@@ -4110,6 +4110,40 @@ h4 {
 .simple-brand svg {
   color: #174d7f;
 }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.manual-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: #547195;
+  background: #f0f4f9;
+  padding: 9px 12px;
+  border-radius: 9px;
+  white-space: nowrap;
+}
+.manual-entry:hover {
+  background: #e6edf7;
+}
+.detail-actions {
+  flex-wrap: wrap;
+}
+@media (max-width: 700px) {
+  .header-actions {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 11px;
+  }
+  .manual-entry {
+    padding: 8px 9px;
+    font-size: 10px;
+    gap: 5px;
+  }
+}
 .simple-nav {
   display: flex;
   gap: 4px;

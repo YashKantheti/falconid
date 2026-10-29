@@ -616,6 +616,9 @@
   }
 }
 @media (max-width: 700px) {
+  .landing-header nav .landing-manual-link {
+    display: none;
+  }
   .landing-header {
     height: 76px;
     padding: 0 6%;

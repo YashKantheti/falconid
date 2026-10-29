@@ -6,6 +6,7 @@ const config: NextConfig = {
     "sharp",
   ],
   outputFileTracingIncludes: {
+    "/api/manuals": ["./data/technical-manuals.json"],
     "/api/identify": [
       "./models/dinov2-small/**/*",
       "./data/recognition-index.json",

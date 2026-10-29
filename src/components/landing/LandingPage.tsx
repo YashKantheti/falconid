@@ -197,6 +197,9 @@ export default function LandingPage() {
         </Link>
         <nav aria-label="Landing navigation">
           <a href="#workflow">How it works</a>
+          <Link href="/manuals" className="landing-manual-link">
+            Ask manuals
+          </Link>
           <Link href="/identify" className="landing-nav-cta">
             Open FalconID <ArrowRight size={15} />
           </Link>

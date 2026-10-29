@@ -34,7 +34,17 @@ After vector retrieval, the app sends the captured photo and up to five candidat
 
 The API returns the actual provider/model and whether vision ran. If the key is missing or a provider request fails, results are explicitly labeled as vector-only. Captures and reference views are transmitted to the configured provider for review; the matching endpoint does not persist photos.
 
-## Matching architecture
+## Technical manual chat
+
+`/manuals` answers questions from two indexed public publications: TO 35C2-3-386-51W/IPB (30 April 2010, 616 PDF pages) and TO 38G1-128-2 (1 November 2000, 155 PDF pages). The server searches page-bound PDF text using BM25, identifier boosts and adjacent-page context, then asks the existing OpenRouter connection for a structured answer. `OPENROUTER_CHAT_MODEL` optionally overrides the text model.
+
+Every answer paragraph must cite retrieved source IDs with exact contiguous quotes. The server validates those quotes against the extracted text and derives page links from its own publication metadata. A separate model call checks whether the cited evidence supports the answer's technical claims before the answer is displayed. Missing evidence, fabricated quotes, or failed support checks produce an explicit insufficient-evidence answer. Questions and history are not saved by the app; they and the retrieved public passages are sent to OpenRouter.
+
+The source viewer distinguishes physical PDF-page numbers from printed page labels and exposes the exact quote, retrieved passage, publication edition, and original PDF link. Component records can open a context-specific chat. The library covers extracted text, not OCR or interpretation of diagrams, and these indexed editions are not a claim of current authorized maintenance guidance.
+
+The checked-in `data/technical-manuals.json` contains publication checksums and page-level excerpts. To rebuild it, install `pypdf`, place the two cited source PDFs in `work/research/mep-832a-2010.pdf` and `work/research/l70ae-2000.pdf`, then run `python3 scripts/index-technical-manuals.py`. PDF parsing is an ingestion task; production requests use the prebuilt index.
+
+## Image matching architecture
 
 Both indexing and inference use `scripts/visual-encoder.mjs`: DINOv2-small, revision `c2bb04a51fab207c420665f1946016107bffc701`, 384-dimensional normalized CLS embeddings. `public/matching.js` computes cosine similarity against reference image vectors, groups by component and returns nearest records. No hashes, filename IDs, prompt labels or sample IDs determine the match. The interface accepts camera captures and user uploads; it does not offer preloaded sample-photo buttons. Equipment-library context is an explicit filter selected by the user.
 

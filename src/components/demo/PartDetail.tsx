@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- Catalog imagery is pre-sized and includes provenance. */
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import {
   ArrowUpRight,
   BookOpen,
@@ -168,6 +169,14 @@ export default function PartDetail({
             <p>{part.compatibility}</p>
           </details>
           <div className="detail-actions">
+            {Boolean(part.documents?.length) && (
+              <Link
+                className="button secondary"
+                href={`/manuals?part=${encodeURIComponent(part.id)}`}
+              >
+                <BookOpen size={17} /> Ask about this part
+              </Link>
+            )}
             <button
               className="button primary"
               onClick={() => {

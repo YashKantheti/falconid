@@ -7,6 +7,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Boxes,
+  BookOpen,
   Check,
   CheckCheck,
   ChevronRight,
@@ -472,37 +473,42 @@ export default function DemoApp() {
               </button>
             ))}
           </nav>
-          <details className="workspace-menu">
-            <summary aria-label="Workspace options">
-              <SlidersHorizontal size={20} />
-            </summary>
-            <div className="workspace-menu-content">
-              <button onClick={() => void ws.sync()}>
-                {ws.syncing ? (
-                  <RefreshCw size={16} className="spin" />
-                ) : ws.online ? (
-                  <Cloud size={16} />
-                ) : (
-                  <WifiOff size={16} />
-                )}{" "}
-                {ws.syncing
-                  ? "Syncing…"
-                  : queue.length
-                    ? `${queue.length} changes pending`
-                    : ws.error
-                      ? "Retry sync"
-                      : ws.online
-                        ? "Workspace synced"
-                        : "Offline"}
-              </button>
-              <button onClick={() => void share()} disabled={!ws.workspace}>
-                <Link2 size={16} /> Share workspace
-              </button>
-              <button onClick={() => setAboutOpen(true)}>
-                <CircleHelp size={16} /> About & sources
-              </button>
-            </div>
-          </details>
+          <div className="header-actions">
+            <Link className="manual-entry" href="/manuals">
+              <BookOpen size={15} /> Ask manuals
+            </Link>
+            <details className="workspace-menu">
+              <summary aria-label="Workspace options">
+                <SlidersHorizontal size={20} />
+              </summary>
+              <div className="workspace-menu-content">
+                <button onClick={() => void ws.sync()}>
+                  {ws.syncing ? (
+                    <RefreshCw size={16} className="spin" />
+                  ) : ws.online ? (
+                    <Cloud size={16} />
+                  ) : (
+                    <WifiOff size={16} />
+                  )}{" "}
+                  {ws.syncing
+                    ? "Syncing…"
+                    : queue.length
+                      ? `${queue.length} changes pending`
+                      : ws.error
+                        ? "Retry sync"
+                        : ws.online
+                          ? "Workspace synced"
+                          : "Offline"}
+                </button>
+                <button onClick={() => void share()} disabled={!ws.workspace}>
+                  <Link2 size={16} /> Share workspace
+                </button>
+                <button onClick={() => setAboutOpen(true)}>
+                  <CircleHelp size={16} /> About & sources
+                </button>
+              </div>
+            </details>
+          </div>
         </div>
       </header>
       <div className="main-shell">
