@@ -39,7 +39,7 @@ export type ManualCitation = {
   excerpt: string;
 };
 export type ManualAnswer = {
-  status: "answered" | "insufficient";
+  status: "answered" | "insufficient" | "restricted";
   paragraphs: { text: string; citations: number[] }[];
   sources: ManualCitation[];
   searchedExcerpts: number;

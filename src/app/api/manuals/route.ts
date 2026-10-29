@@ -1,29 +1,29 @@
 import { APICallError } from "ai";
-import { z } from "zod";
+import {
+  manualRequestSchema,
+  ManualBodyTooLarge,
+  readLimitedManualBody,
+} from "@/lib/manual-request";
 import catalog from "../../../../data/catalog.json";
 import { manualLibrary } from "@/lib/manual-corpus";
 import {
   answerFromManuals,
   manualChatConfiguration,
 } from "@/lib/manual-answer";
+import { classifyManualScope } from "@/lib/manual-scope";
+import { guardedManualChat } from "@/lib/manual-service";
+import { consumeManualQuota, ManualRateLimitError } from "@/lib/manual-limits";
+import {
+  manualSigningKey,
+  ManualSessionError,
+  nextManualHistory,
+  readManualHistory,
+  signManualHistory,
+} from "@/lib/manual-session";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
 export const dynamic = "force-dynamic";
-const requestSchema = z.object({
-  question: z.string().trim().min(3).max(1600),
-  history: z
-    .array(
-      z.object({
-        role: z.enum(["user", "assistant"]),
-        content: z.string().max(5000),
-      }),
-    )
-    .max(8)
-    .default([]),
-  documentId: z.enum(["generator-2010", "engine-2000", "all"]).default("all"),
-  partId: z.string().max(40).optional(),
-});
 export async function GET(request: Request) {
   const { corpus } = manualLibrary();
   const partId = new URL(request.url).searchParams.get("part");
@@ -47,6 +47,8 @@ export async function GET(request: Request) {
       pages: corpus.documents.reduce((sum, doc) => sum + doc.pages, 0),
       excerpts: corpus.chunks.length,
       indexing: "Searchable PDF text; diagrams and images are not interpreted.",
+      scope:
+        "Equipment-manual questions only. Coding and general-purpose requests are restricted.",
     },
     { headers: { "Cache-Control": "no-store" } },
   );
@@ -57,6 +59,8 @@ export async function POST(request: Request) {
     request.headers.get("x-forwarded-host") ||
     request.headers.get("host") ||
     new URL(request.url).host;
+  if (!origin || request.headers.get("sec-fetch-site") === "cross-site")
+    return Response.json({ error: "Origin not allowed" }, { status: 403 });
   if (origin) {
     try {
       if (new URL(origin).host !== host)
@@ -65,13 +69,18 @@ export async function POST(request: Request) {
       return Response.json({ error: "Origin not allowed" }, { status: 403 });
     }
   }
+  if (
+    request.headers.get("content-type")?.split(";")[0].trim().toLowerCase() !==
+    "application/json"
+  )
+    return Response.json({ error: "Use application/json." }, { status: 415 });
   if (Number(request.headers.get("content-length") || 0) > 32000)
     return Response.json(
       { error: "Conversation is too large." },
       { status: 413 },
     );
   try {
-    const body = await request.text();
+    const body = await readLimitedManualBody(request);
     if (body.length > 32000)
       return Response.json(
         { error: "Conversation is too large." },
@@ -86,7 +95,7 @@ export async function POST(request: Request) {
         { status: 400 },
       );
     }
-    const input = requestSchema.safeParse(parsed);
+    const input = manualRequestSchema.safeParse(parsed);
     if (!input.success)
       return Response.json(
         {
@@ -103,7 +112,9 @@ export async function POST(request: Request) {
         },
         { status: 503 },
       );
-    const { question, history, documentId, partId } = input.data;
+    const { question, documentId, partId, conversationToken } = input.data;
+    const key = manualSigningKey();
+    const history = readManualHistory(conversationToken, key);
     const part = partId
       ? catalog.find((part) => part.id === partId)
       : undefined;
@@ -121,22 +132,65 @@ export async function POST(request: Request) {
     const previousAssistant =
       history.filter((message) => message.role === "assistant").at(-1)
         ?.content || "";
-    const { corpus, search } = manualLibrary();
-    const hits = search(question, {
-      documentId: documentId === "all" ? undefined : documentId,
-      context,
-      previousQuestion: previousUser + " " + previousAssistant.slice(0, 1400),
-    });
-    const answer = await answerFromManuals({
-      question,
-      history,
-      hits,
-      documents: corpus.documents,
-      context,
-      signal: AbortSignal.any([request.signal, AbortSignal.timeout(65000)]),
-    });
-    return Response.json(answer, { headers: { "Cache-Control": "no-store" } });
+    const signal = AbortSignal.any([
+      request.signal,
+      AbortSignal.timeout(65000),
+    ]);
+    const answer = await guardedManualChat(
+      { question, history, context },
+      {
+        consumeQuota: () => consumeManualQuota(request, key),
+        scopeAllowed: () =>
+          classifyManualScope({ question, history, context, signal }),
+        answer: () => {
+          const { corpus, search } = manualLibrary();
+          const hits = search(question, {
+            documentId: documentId === "all" ? undefined : documentId,
+            context,
+            previousQuestion:
+              previousUser + " " + previousAssistant.slice(0, 1400),
+          });
+          return answerFromManuals({
+            question,
+            history,
+            hits,
+            documents: corpus.documents,
+            context,
+            signal,
+          });
+        },
+      },
+    );
+    const nextToken =
+      answer.status === "restricted"
+        ? conversationToken
+        : signManualHistory(nextManualHistory(history, question, answer), key);
+    return Response.json(
+      { ...answer, conversationToken: nextToken },
+      { headers: { "Cache-Control": "no-store" } },
+    );
   } catch (error) {
+    if (error instanceof ManualBodyTooLarge)
+      return Response.json(
+        { error: "Conversation is too large." },
+        { status: 413 },
+      );
+    if (error instanceof ManualSessionError)
+      return Response.json(
+        { error: error.message, code: "SESSION_INVALID" },
+        { status: 409, headers: { "Cache-Control": "no-store" } },
+      );
+    if (error instanceof ManualRateLimitError)
+      return Response.json(
+        { error: error.message, code: "CHAT_RATE_LIMIT" },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(error.retryAfter),
+            "Cache-Control": "no-store",
+          },
+        },
+      );
     if (request.signal.aborted)
       return Response.json({ error: "Question canceled." }, { status: 499 });
     console.error("Technical chat failed", {
@@ -144,7 +198,10 @@ export async function POST(request: Request) {
       statusCode: APICallError.isInstance(error) ? error.statusCode : undefined,
     });
     return Response.json(
-      { error: "The document answer could not complete. Please try again." },
+      {
+        error:
+          "The protected document chat could not complete. Please try again later.",
+      },
       { status: 503 },
     );
   }

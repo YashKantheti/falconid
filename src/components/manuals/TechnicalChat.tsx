@@ -20,7 +20,6 @@ import type {
   ManualAnswer,
   ManualCitation,
   ManualDocument,
-  ManualMessage,
 } from "@/lib/manual-types";
 import { Modal } from "@/components/demo/Modal";
 
@@ -49,6 +48,7 @@ export default function TechnicalChat() {
   const [error, setError] = useState("");
   const [source, setSource] = useState<ManualCitation | null>(null);
   const controller = useRef<AbortController | null>(null);
+  const conversationToken = useRef<string | undefined>(undefined);
   const composer = useRef<HTMLTextAreaElement>(null);
   const bottom = useRef<HTMLDivElement>(null);
 
@@ -98,16 +98,6 @@ export default function TechnicalChat() {
     const request = new AbortController();
     controller.current = request;
     const id = crypto.randomUUID();
-    const history: ManualMessage[] = turns.slice(-8).map((turn) => ({
-      role: turn.role,
-      content:
-        turn.role === "user"
-          ? turn.text
-          : turn.answer.paragraphs
-              .map((paragraph) => paragraph.text)
-              .join("\n")
-              .slice(0, 4500),
-    }));
     setTurns((previous) => [...previous, { id, role: "user", text: trimmed }]);
     setQuestion("");
     setError("");
@@ -118,17 +108,24 @@ export default function TechnicalChat() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: trimmed,
-          history,
+          conversationToken: conversationToken.current,
           documentId: scope,
           partId: context?.id,
         }),
         signal: request.signal,
       });
       const result = await response.json();
+      if (result.code === "SESSION_INVALID") {
+        conversationToken.current = undefined;
+        throw Error(
+          "Your chat session expired or changed. Send the question again to start fresh.",
+        );
+      }
       if (!response.ok)
         throw Error(
           result.error || "The answer could not complete. Try again.",
         );
+      conversationToken.current = result.conversationToken;
       setTurns((previous) => [
         ...previous,
         {
@@ -204,6 +201,7 @@ export default function TechnicalChat() {
           <button
             onClick={() => {
               setTurns([]);
+              conversationToken.current = undefined;
               setQuestion("");
               setError("");
               composer.current?.focus();
@@ -277,6 +275,8 @@ export default function TechnicalChat() {
                         <>
                           <Check size={11} /> Cited answer
                         </>
+                      ) : turn.answer.status === "restricted" ? (
+                        "Manual questions only"
                       ) : (
                         "Evidence not established"
                       )}
@@ -406,6 +406,7 @@ export default function TechnicalChat() {
             </div>
           </form>
           <p className="manual-privacy">
+            Equipment manual questions only. Usage limits apply. <br />
             Questions and excerpts are sent to OpenRouter. Chat stays in this
             tab.
           </p>
