@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import sharp from "sharp";
+import { APICallError } from "ai";
 import index from "../../../../data/recognition-index.json";
 import catalog from "../../../../data/catalog.json";
 import type { CatalogPart } from "@/lib/demo-types";
@@ -118,6 +119,9 @@ export async function POST(request: NextRequest) {
       } catch (error) {
         console.error("Hosted vision review failed", {
           type: error instanceof Error ? error.name : "Unknown",
+          statusCode: APICallError.isInstance(error)
+            ? error.statusCode
+            : undefined,
         });
         match = {
           ...vectorResult,
