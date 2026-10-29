@@ -14,6 +14,10 @@ AI visual component matching for aerospace ground equipment. The focused workflo
 
 ## Run
 
+The public home page is a scroll-controlled 3D generator assembly built with Three.js. The gear rotates, aligns and seats as the visitor scrolls; rendering pauses when the scene is out of view. The illustration is an artistic assembly study, not a dimensionally validated equipment model. A static/SVG fallback, reduced-motion layout and keyboard skip link keep the page usable without animation. The 3D module loads separately from the identification app.
+
+The identification workspace lives at `/identify`. Existing `/?workspace=...` sharing links redirect there with the same workspace UUID. Installed app shortcuts open `/identify`, and offline navigation caches the landing page and workspace separately.
+
 Node 22+ (Vercel Node 24):
 
 ```

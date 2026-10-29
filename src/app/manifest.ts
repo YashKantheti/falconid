@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: BRAND.name,
     short_name: BRAND.name,
     description: BRAND.tagline,
-    start_url: "/",
+    start_url: "/identify",
     display: "standalone",
     background_color: "#ffffff",
     theme_color: "#172e48",

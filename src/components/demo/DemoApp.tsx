@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- Locally curated catalog photographs retain their original aspect ratio and attribution. */
 "use client";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import {
   ArrowDownToLine,
   ArrowRight,
@@ -263,9 +264,10 @@ export default function DemoApp() {
     }
     setOfflineSaving(true);
     try {
-      const cache = await caches.open("falconid-v6-catalog");
+      const cache = await caches.open("falconid-v7-catalog");
       const urls = [
         "/",
+        "/identify",
         "/catalog.json",
         "/photo-credits.json",
         "/evaluation-report.json",
@@ -451,17 +453,10 @@ export default function DemoApp() {
     <div className="app-shell">
       <header className="simple-header">
         <div className="header-inner">
-          <a
-            className="simple-brand"
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("identify");
-            }}
-          >
+          <Link className="simple-brand" href="/">
             <img src="/falconid-mark.svg" width={30} height={30} alt="" />
             <span>{BRAND.name}</span>
-          </a>
+          </Link>
           <nav className="simple-nav" aria-label="Main navigation">
             {nav.map((n) => (
               <button

@@ -1,4 +1,4 @@
-const CACHE = "falconid-v6-catalog";
+const CACHE = "falconid-v7-catalog";
 self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());
 });
@@ -24,6 +24,7 @@ self.addEventListener("fetch", (event) => {
   )
     return;
   const staticAsset =
+    url.pathname.startsWith("/_next/static/") ||
     url.pathname.startsWith("/assets/") ||
     url.pathname.startsWith("/catalog/") ||
     url.pathname.startsWith("/labels/") ||
@@ -43,11 +44,13 @@ self.addEventListener("fetch", (event) => {
         .then(async (response) => {
           if (response.ok) {
             const cache = await caches.open(CACHE);
-            await cache.put("/", response.clone());
+            await cache.put(new URL(response.url).pathname, response.clone());
           }
           return response;
         })
-        .catch(async () => (await caches.match("/")) || Response.error()),
+        .catch(
+          async () => (await caches.match(url.pathname)) || Response.error(),
+        ),
     );
     return;
   }
