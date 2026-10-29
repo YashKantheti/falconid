@@ -25,6 +25,23 @@ const config: NextConfig = {
       "./node_modules/onnxruntime-node/bin/napi-v6/linux/x64/libonnxruntime_providers_*.so",
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        has: [
+          {
+            type: "query",
+            key: "workspace",
+            value:
+              "(?<workspace>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})",
+          },
+        ],
+        destination: "/identify?workspace=:workspace",
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {
