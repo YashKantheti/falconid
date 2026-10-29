@@ -13,10 +13,14 @@ export async function guardedManualChat(
     answer(): Promise<ManualAnswer>;
   },
 ): Promise<ManualAnswer> {
-  if (!preflightManualQuestion(input.question, input.history, input.context))
+  if (!preflightManualQuestion(input.question, input.history, input.context)) {
+    console.info("Manual chat restricted", { stage: "preflight" });
     return restrictedManualAnswer();
+  }
   await dependencies.consumeQuota();
   if (!(await dependencies.scopeAllowed())) return restrictedManualAnswer();
   const answer = await dependencies.answer();
+  if (answer.status === "restricted" || !safeManualOutput(answer))
+    console.info("Manual chat restricted", { stage: "answer_output" });
   return safeManualOutput(answer) ? answer : restrictedManualAnswer();
 }
