@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import assert from "node:assert/strict";
 import sharp from "sharp";
-const base = process.env.TEST_URL || "https://age-scout-demo.vercel.app";
+const base = process.env.TEST_URL || "https://falconid.vercel.app";
 const config = await (await fetch(base + "/api/identify")).json();
 assert.equal(config.configured, true, "Hosted AI is not configured");
 const cases = [

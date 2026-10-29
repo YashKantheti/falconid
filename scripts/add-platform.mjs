@@ -69,7 +69,7 @@ const parts = definitions.map((d, i) => ({
       title: d.name + " · reference view",
       sourceUrl: manual + "#page=" + (d.page - 1),
       originalUrl: "",
-      author: "AGE Scout · AI-generated illustration",
+      author: "FalconID · AI-generated illustration",
       license: "Generated image",
       licenseUrl: "/image-provenance.json",
       modified:

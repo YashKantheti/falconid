@@ -1,4 +1,14 @@
-# AGE Scout
+# FalconID
+
+*From photo to part.*
+
+Live app: [falconid.vercel.app](https://falconid.vercel.app).
+
+Source: [YashKantheti/falconid](https://github.com/YashKantheti/falconid).
+
+## Branding
+
+The product name, tagline and public URL are defined in `src/lib/branding.ts`. Run `node scripts/build-brand-assets.mjs` to rebuild the FalconID icon set and social share image. Existing browser and cloud storage identifiers remain compatible with earlier versions so the rebrand does not reset saved workspaces or photo drafts.
 
 AI visual component matching for aerospace ground equipment. The focused workflow uses the MEP-832A 3 kW / 400 Hz tactical quiet generator and three source-linked component records, alongside 100 general component categories.
 

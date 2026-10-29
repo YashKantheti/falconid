@@ -14,7 +14,6 @@ import {
   Clock3,
   Cloud,
   CloudOff,
-  Compass,
   Download,
   ExternalLink,
   Filter,
@@ -49,6 +48,7 @@ import { REQUEST_STATUSES } from "@/lib/demo-types";
 import { assets } from "@/lib/demo-seed";
 import { noteStatus, requestStatus } from "@/lib/workspace-logic";
 import { useDemoWorkspace } from "@/hooks/useDemoWorkspace";
+import { BRAND } from "@/lib/branding";
 import IdentifyPanel from "./IdentifyPanel";
 import PartDetail from "./PartDetail";
 import { Modal } from "./Modal";
@@ -263,7 +263,7 @@ export default function DemoApp() {
     }
     setOfflineSaving(true);
     try {
-      const cache = await caches.open("age-scout-v5-catalog");
+      const cache = await caches.open("falconid-v6-catalog");
       const urls = [
         "/",
         "/catalog.json",
@@ -459,8 +459,8 @@ export default function DemoApp() {
               navigate("identify");
             }}
           >
-            <Compass size={24} strokeWidth={1.6} />
-            <span>AGE Scout</span>
+            <img src="/falconid-mark.svg" width={30} height={30} alt="" />
+            <span>{BRAND.name}</span>
           </a>
           <nav className="simple-nav" aria-label="Main navigation">
             {nav.map((n) => (
@@ -535,7 +535,7 @@ export default function DemoApp() {
                 {
                   (
                     {
-                      identify: "Find a part.",
+                      identify: BRAND.tagline,
                       catalog: "Parts",
                       fleet: "Equipment",
                       requests: "Requests",
@@ -958,8 +958,14 @@ export default function DemoApp() {
         </Modal>
       )}
       {aboutOpen && (
-        <Modal title="About AGE Scout" onClose={() => setAboutOpen(false)}>
+        <Modal
+          title={`About ${BRAND.name}`}
+          onClose={() => setAboutOpen(false)}
+        >
           <div className="simple-about">
+            <p>
+              <strong>{BRAND.tagline}</strong>
+            </p>
             <p>AI-assisted part lookup for aerospace ground equipment.</p>
             <details>
               <summary>Data & sources</summary>

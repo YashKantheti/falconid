@@ -1,4 +1,4 @@
-const CACHE = "age-scout-v5-catalog";
+const CACHE = "falconid-v6-catalog";
 self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());
 });
@@ -6,7 +6,10 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
       for (const name of await caches.keys())
-        if (name.startsWith("age-scout-") && name !== CACHE)
+        if (
+          (name.startsWith("age-scout-") || name.startsWith("falconid-")) &&
+          name !== CACHE
+        )
           await caches.delete(name);
       await self.clients.claim();
     })(),
@@ -26,7 +29,6 @@ self.addEventListener("fetch", (event) => {
     url.pathname.startsWith("/labels/") ||
     url.pathname.startsWith("/vendor/") ||
     url.pathname.startsWith("/models/") ||
-
     [
       "/recognition-worker.js",
       "/matching.js",

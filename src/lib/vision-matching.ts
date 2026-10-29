@@ -4,6 +4,7 @@ import sharp from "sharp";
 import { generateText, Output, type LanguageModel } from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { z } from "zod";
+import { BRAND } from "./branding.ts";
 import type { Candidate, CatalogPart, MatchResult } from "./demo-types.ts";
 
 export const DEFAULT_VISION_MODEL = "openai/gpt-6.1-terra";
@@ -80,8 +81,8 @@ export async function reviewWithVision({
   const provider = createOpenRouter({
     apiKey: process.env.OPENROUTER_API_KEY?.trim(),
     headers: {
-      "HTTP-Referer": "https://age-scout-demo.vercel.app",
-      "X-Title": "AGE Scout",
+      "HTTP-Referer": BRAND.url,
+      "X-Title": BRAND.name,
     },
   });
   const ids = candidates.map((c) => c.partId) as [string, ...string[]];
