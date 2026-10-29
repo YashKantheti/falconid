@@ -4,15 +4,27 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prebuild": "node scripts/prepare-runtime.mjs",
+    "catalog:build": "node scripts/build-catalog.mjs && node scripts/add-platform.mjs && node scripts/add-internet-references.mjs",
+    "catalog:encode": "node scripts/build-recognition.mjs",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "format": "prettier --write src scripts tests next.config.ts eslint.config.mjs public/recognition-worker.js public/matching.js public/sw.js"
   },
   "dependencies": {
-    "next": "16.2.4",
+    "@huggingface/transformers": "^4.3.2",
+    "@openrouter/ai-sdk-provider": "^3.1.0",
+    "@vercel/blob": "^2.4.0",
+    "ai": "^7.0.156",
+    "lucide-react": "^1.63.0",
+    "next": "^16.4.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "zustand": "^5.0.12"
+    "sharp": "^0.35.5",
+    "tesseract.js": "^7.0.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -20,7 +32,9 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.4",
+    "eslint-config-next": "^16.4.3",
+    "prettier": "^3.9.10",
+    "qrcode": "^1.5.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

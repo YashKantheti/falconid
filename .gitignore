@@ -39,3 +39,21 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.model-cache/
+.demo-data/
+.env*.local
+.vercel/
+
+public/models/
+public/vendor/
+data/contact-*.jpg
+data/image-candidates.json
+data/wiki-files.json
+data/photo-metadata.json
+data/extra-candidates.json
+
+models/
+work/
+
+!.env.example

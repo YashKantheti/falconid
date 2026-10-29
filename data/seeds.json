@@ -1,0 +1,602 @@
+[
+  {
+    "name": "Hex bolt",
+    "category": "Fasteners",
+    "title": "Bolt (fastener)",
+    "id": "DEMO-001"
+  },
+  {
+    "name": "Socket head cap screw",
+    "category": "Fasteners",
+    "title": "Screw",
+    "id": "DEMO-002"
+  },
+  {
+    "name": "Countersunk screw",
+    "category": "Fasteners",
+    "title": "Screw",
+    "id": "DEMO-003"
+  },
+  {
+    "name": "Set screw",
+    "category": "Fasteners",
+    "title": "Set screw",
+    "id": "DEMO-004"
+  },
+  {
+    "name": "Carriage bolt",
+    "category": "Fasteners",
+    "title": "Carriage bolt",
+    "id": "DEMO-005"
+  },
+  {
+    "name": "Eye bolt",
+    "category": "Fasteners",
+    "title": "Eyebolt",
+    "id": "DEMO-006"
+  },
+  {
+    "name": "U bolt",
+    "category": "Fasteners",
+    "title": "U-bolt",
+    "id": "DEMO-007"
+  },
+  {
+    "name": "Threaded rod",
+    "category": "Fasteners",
+    "title": "Threaded rod",
+    "id": "DEMO-008"
+  },
+  {
+    "name": "Hex nut",
+    "category": "Fasteners",
+    "title": "Nut (hardware)",
+    "id": "DEMO-009"
+  },
+  {
+    "name": "Wing nut",
+    "category": "Fasteners",
+    "title": "Wing nut",
+    "id": "DEMO-010"
+  },
+  {
+    "name": "Cap nut",
+    "category": "Fasteners",
+    "title": "Acorn nut",
+    "id": "DEMO-011"
+  },
+  {
+    "name": "Castle nut",
+    "category": "Fasteners",
+    "title": "Castellated nut",
+    "id": "DEMO-012"
+  },
+  {
+    "name": "Lock nut",
+    "category": "Fasteners",
+    "title": "Locknut",
+    "id": "DEMO-013"
+  },
+  {
+    "name": "Coupling nut",
+    "category": "Fasteners",
+    "title": "Coupling nut",
+    "id": "DEMO-014"
+  },
+  {
+    "name": "Flat washer",
+    "category": "Fasteners",
+    "title": "Washer (hardware)",
+    "id": "DEMO-015"
+  },
+  {
+    "name": "Spring washer",
+    "category": "Fasteners",
+    "title": "Washer (hardware)",
+    "id": "DEMO-016"
+  },
+  {
+    "name": "Circlip",
+    "category": "Fasteners",
+    "title": "Circlip",
+    "id": "DEMO-017"
+  },
+  {
+    "name": "Cotter pin",
+    "category": "Fasteners",
+    "title": "Split pin",
+    "id": "DEMO-018"
+  },
+  {
+    "name": "Spring pin",
+    "category": "Fasteners",
+    "title": "Spring pin",
+    "id": "DEMO-019"
+  },
+  {
+    "name": "Blind rivet",
+    "category": "Fasteners",
+    "title": "Rivet",
+    "id": "DEMO-020"
+  },
+  {
+    "name": "Ball bearing",
+    "category": "Motion & drive",
+    "title": "Ball bearing",
+    "id": "DEMO-021"
+  },
+  {
+    "name": "Tapered roller bearing",
+    "category": "Motion & drive",
+    "title": "Tapered roller bearing",
+    "id": "DEMO-022"
+  },
+  {
+    "name": "Needle roller bearing",
+    "category": "Motion & drive",
+    "title": "Needle roller bearing",
+    "id": "DEMO-023"
+  },
+  {
+    "name": "Pillow block bearing",
+    "category": "Motion & drive",
+    "title": "Pillow block bearing",
+    "id": "DEMO-024"
+  },
+  {
+    "name": "Plain bearing",
+    "category": "Motion & drive",
+    "title": "Plain bearing",
+    "id": "DEMO-025"
+  },
+  {
+    "name": "Rod end bearing",
+    "category": "Motion & drive",
+    "title": "Rod end bearing",
+    "id": "DEMO-026"
+  },
+  {
+    "name": "Shaft coupling",
+    "category": "Motion & drive",
+    "title": "Coupling",
+    "id": "DEMO-027"
+  },
+  {
+    "name": "Universal joint",
+    "category": "Motion & drive",
+    "title": "Universal joint",
+    "id": "DEMO-028"
+  },
+  {
+    "name": "Spur gear",
+    "category": "Motion & drive",
+    "title": "Gear",
+    "id": "DEMO-029"
+  },
+  {
+    "name": "Bevel gear",
+    "category": "Motion & drive",
+    "title": "Bevel gear",
+    "id": "DEMO-030"
+  },
+  {
+    "name": "Worm gear",
+    "category": "Motion & drive",
+    "title": "Worm drive",
+    "id": "DEMO-031"
+  },
+  {
+    "name": "Sprocket",
+    "category": "Motion & drive",
+    "title": "Sprocket",
+    "id": "DEMO-032"
+  },
+  {
+    "name": "Roller chain",
+    "category": "Motion & drive",
+    "title": "Roller chain",
+    "id": "DEMO-033"
+  },
+  {
+    "name": "V belt",
+    "category": "Motion & drive",
+    "title": "Belt (mechanical)",
+    "id": "DEMO-034"
+  },
+  {
+    "name": "Timing belt",
+    "category": "Motion & drive",
+    "title": "Timing belt",
+    "id": "DEMO-035"
+  },
+  {
+    "name": "Pulley",
+    "category": "Motion & drive",
+    "title": "Pulley",
+    "id": "DEMO-036"
+  },
+  {
+    "name": "Compression spring",
+    "category": "Motion & drive",
+    "title": "Coil spring",
+    "id": "DEMO-037"
+  },
+  {
+    "name": "Extension spring",
+    "category": "Motion & drive",
+    "title": "Spring (device)",
+    "id": "DEMO-038"
+  },
+  {
+    "name": "Torsion spring",
+    "category": "Motion & drive",
+    "title": "Torsion spring",
+    "id": "DEMO-039"
+  },
+  {
+    "name": "Flywheel",
+    "category": "Motion & drive",
+    "title": "Flywheel",
+    "id": "DEMO-040"
+  },
+  {
+    "name": "Ball valve",
+    "category": "Fluid & pneumatic",
+    "title": "Ball valve",
+    "id": "DEMO-041"
+  },
+  {
+    "name": "Gate valve",
+    "category": "Fluid & pneumatic",
+    "title": "Gate valve",
+    "id": "DEMO-042"
+  },
+  {
+    "name": "Butterfly valve",
+    "category": "Fluid & pneumatic",
+    "title": "Butterfly valve",
+    "id": "DEMO-043"
+  },
+  {
+    "name": "Check valve",
+    "category": "Fluid & pneumatic",
+    "title": "Check valve",
+    "id": "DEMO-044"
+  },
+  {
+    "name": "Needle valve",
+    "category": "Fluid & pneumatic",
+    "title": "Needle valve",
+    "id": "DEMO-045"
+  },
+  {
+    "name": "Solenoid valve",
+    "category": "Fluid & pneumatic",
+    "title": "Solenoid valve",
+    "id": "DEMO-046"
+  },
+  {
+    "name": "Pressure regulator",
+    "category": "Fluid & pneumatic",
+    "title": "Pressure regulator",
+    "id": "DEMO-047"
+  },
+  {
+    "name": "Pressure gauge",
+    "category": "Fluid & pneumatic",
+    "title": "Pressure gauge",
+    "id": "DEMO-048"
+  },
+  {
+    "name": "Hydraulic cylinder",
+    "category": "Fluid & pneumatic",
+    "title": "Hydraulic cylinder",
+    "id": "DEMO-049"
+  },
+  {
+    "name": "Hydraulic hose",
+    "category": "Fluid & pneumatic",
+    "title": "Hydraulic hose",
+    "id": "DEMO-050"
+  },
+  {
+    "name": "Hose clamp",
+    "category": "Fluid & pneumatic",
+    "title": "Hose clamp",
+    "id": "DEMO-051"
+  },
+  {
+    "name": "Pipe elbow",
+    "category": "Fluid & pneumatic",
+    "title": "Piping and plumbing fitting",
+    "id": "DEMO-052"
+  },
+  {
+    "name": "Pipe tee",
+    "category": "Fluid & pneumatic",
+    "title": "Piping and plumbing fitting",
+    "id": "DEMO-053"
+  },
+  {
+    "name": "Quick disconnect coupling",
+    "category": "Fluid & pneumatic",
+    "title": "Quick connect fitting",
+    "id": "DEMO-054"
+  },
+  {
+    "name": "Pipe flange",
+    "category": "Fluid & pneumatic",
+    "title": "Pipe flange",
+    "id": "DEMO-055"
+  },
+  {
+    "name": "Gasket",
+    "category": "Fluid & pneumatic",
+    "title": "Gasket",
+    "id": "DEMO-056"
+  },
+  {
+    "name": "O ring",
+    "category": "Fluid & pneumatic",
+    "title": "O-ring",
+    "id": "DEMO-057"
+  },
+  {
+    "name": "Oil seal",
+    "category": "Fluid & pneumatic",
+    "title": "Radial shaft seal",
+    "id": "DEMO-058"
+  },
+  {
+    "name": "Air filter",
+    "category": "Fluid & pneumatic",
+    "title": "Air filter",
+    "id": "DEMO-059"
+  },
+  {
+    "name": "Oil filter",
+    "category": "Fluid & pneumatic",
+    "title": "Oil filter",
+    "id": "DEMO-060"
+  },
+  {
+    "name": "Fuel filter",
+    "category": "Fluid & pneumatic",
+    "title": "Fuel filter",
+    "id": "DEMO-061"
+  },
+  {
+    "name": "Heat exchanger",
+    "category": "Fluid & pneumatic",
+    "title": "Heat exchanger",
+    "id": "DEMO-062"
+  },
+  {
+    "name": "Centrifugal pump",
+    "category": "Fluid & pneumatic",
+    "title": "Centrifugal pump",
+    "id": "DEMO-063"
+  },
+  {
+    "name": "Gear pump",
+    "category": "Fluid & pneumatic",
+    "title": "Gear pump",
+    "id": "DEMO-064"
+  },
+  {
+    "name": "Grease nipple",
+    "category": "Fluid & pneumatic",
+    "title": "Grease nipple",
+    "id": "DEMO-065"
+  },
+  {
+    "name": "Spark plug",
+    "category": "Electrical",
+    "title": "Spark plug",
+    "id": "DEMO-066"
+  },
+  {
+    "name": "Glow plug",
+    "category": "Electrical",
+    "title": "Glow plug",
+    "id": "DEMO-067"
+  },
+  {
+    "name": "Ignition coil",
+    "category": "Electrical",
+    "title": "Ignition coil",
+    "id": "DEMO-068"
+  },
+  {
+    "name": "Alternator",
+    "category": "Electrical",
+    "title": "Alternator",
+    "id": "DEMO-069"
+  },
+  {
+    "name": "Starter motor",
+    "category": "Electrical",
+    "title": "Starter motor",
+    "id": "DEMO-070"
+  },
+  {
+    "name": "Electric motor",
+    "category": "Electrical",
+    "title": "Electric motor",
+    "id": "DEMO-071"
+  },
+  {
+    "name": "Lead acid battery",
+    "category": "Electrical",
+    "title": "Lead–acid battery",
+    "id": "DEMO-072"
+  },
+  {
+    "name": "Battery terminal",
+    "category": "Electrical",
+    "title": "Battery terminal",
+    "id": "DEMO-073"
+  },
+  {
+    "name": "Blade fuse",
+    "category": "Electrical",
+    "title": "Fuse (automotive)",
+    "id": "DEMO-074"
+  },
+  {
+    "name": "Glass cartridge fuse",
+    "category": "Electrical",
+    "title": "Fuse (electrical)",
+    "id": "DEMO-075"
+  },
+  {
+    "name": "Circuit breaker",
+    "category": "Electrical",
+    "title": "Circuit breaker",
+    "id": "DEMO-076"
+  },
+  {
+    "name": "Electromagnetic relay",
+    "category": "Electrical",
+    "title": "Relay",
+    "id": "DEMO-077"
+  },
+  {
+    "name": "Contactor",
+    "category": "Electrical",
+    "title": "Contactor",
+    "id": "DEMO-078"
+  },
+  {
+    "name": "Toggle switch",
+    "category": "Electrical",
+    "title": "Toggle switch",
+    "id": "DEMO-079"
+  },
+  {
+    "name": "Push button switch",
+    "category": "Electrical",
+    "title": "Push-button",
+    "id": "DEMO-080"
+  },
+  {
+    "name": "Rotary switch",
+    "category": "Electrical",
+    "title": "Rotary switch",
+    "id": "DEMO-081"
+  },
+  {
+    "name": "Limit switch",
+    "category": "Electrical",
+    "title": "Limit switch",
+    "id": "DEMO-082"
+  },
+  {
+    "name": "Proximity sensor",
+    "category": "Electrical",
+    "title": "Proximity sensor",
+    "id": "DEMO-083"
+  },
+  {
+    "name": "Thermocouple",
+    "category": "Electrical",
+    "title": "Thermocouple",
+    "id": "DEMO-084"
+  },
+  {
+    "name": "Pressure switch",
+    "category": "Electrical",
+    "title": "Pressure switch",
+    "id": "DEMO-085"
+  },
+  {
+    "name": "Terminal block",
+    "category": "Electrical",
+    "title": "Terminal block",
+    "id": "DEMO-086"
+  },
+  {
+    "name": "Ring terminal",
+    "category": "Electrical",
+    "title": "Electrical connector",
+    "id": "DEMO-087"
+  },
+  {
+    "name": "Spade terminal",
+    "category": "Electrical",
+    "title": "Electrical connector",
+    "id": "DEMO-088"
+  },
+  {
+    "name": "Coaxial connector",
+    "category": "Electrical",
+    "title": "RF connector",
+    "id": "DEMO-089"
+  },
+  {
+    "name": "Circular connector",
+    "category": "Electrical",
+    "title": "Electrical connector",
+    "id": "DEMO-090"
+  },
+  {
+    "name": "Cable gland",
+    "category": "Electrical",
+    "title": "Cable gland",
+    "id": "DEMO-091"
+  },
+  {
+    "name": "Electrolytic capacitor",
+    "category": "Electrical",
+    "title": "Electrolytic capacitor",
+    "id": "DEMO-092"
+  },
+  {
+    "name": "Power resistor",
+    "category": "Electrical",
+    "title": "Resistor",
+    "id": "DEMO-093"
+  },
+  {
+    "name": "Rectifier diode",
+    "category": "Electrical",
+    "title": "Diode",
+    "id": "DEMO-094"
+  },
+  {
+    "name": "Transformer",
+    "category": "Electrical",
+    "title": "Transformer",
+    "id": "DEMO-095"
+  },
+  {
+    "name": "Cooling fan",
+    "category": "Electrical",
+    "title": "Computer fan",
+    "id": "DEMO-096"
+  },
+  {
+    "name": "Solenoid",
+    "category": "Electrical",
+    "title": "Solenoid",
+    "id": "DEMO-097"
+  },
+  {
+    "name": "Potentiometer",
+    "category": "Electrical",
+    "title": "Potentiometer",
+    "id": "DEMO-098"
+  },
+  {
+    "name": "Heat sink",
+    "category": "Electrical",
+    "title": "Heat sink",
+    "id": "DEMO-099"
+  },
+  {
+    "name": "Cable tie",
+    "category": "Electrical",
+    "title": "Cable tie",
+    "id": "DEMO-100"
+  }
+]

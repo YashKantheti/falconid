@@ -1,0 +1,12 @@
+{
+  "id": "Xenova/dinov2-small",
+  "revision": "c2bb04a51fab207c420665f1946016107bffc701",
+  "dtype": "q8",
+  "dimensions": 384,
+  "pooling": "CLS token / L2 normalized",
+  "distance": "cosine",
+  "runtime": "Node.js / ONNX Runtime CPU",
+  "library": "@huggingface/transformers@4.3.2",
+  "license": "Apache-2.0",
+  "source": "https://huggingface.co/Xenova/dinov2-small"
+}

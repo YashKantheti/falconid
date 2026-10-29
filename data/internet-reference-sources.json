@@ -1,0 +1,29 @@
+[
+  {
+    "file": "air-filter-modern.jpg",
+    "partId": "MEP-AIR-01",
+    "partNumber": "114250-12581",
+    "url": "https://cdn11.bigcommerce.com/s-873ultu4xu/images/stencil/1280x1280/products/2069354/3474989/getimage__51013.1754086465.jpg?c=2",
+    "source": "https://shop.moderngroup.com/114250-12581-aftermarket-yanmar-diesel-filter-air/",
+    "author": "The Modern Shop / TotalSource",
+    "path": "/assets/components/mep-air-01-real.jpg"
+  },
+  {
+    "file": "fuel-filter-reference.jpg",
+    "partId": "MEP-FUEL-01",
+    "partNumber": "33583",
+    "url": "https://s7g10.scene7.com/is/image/mannhummel/33583-1?qlt=82&ts=1781262474899&dpr=off",
+    "source": "https://www.wixfilters.com/en-ph/catalog/results/product.html/33583_wix.html",
+    "author": "WIX Filters / MANN+HUMMEL",
+    "path": "/assets/components/mep-fuel-01-real.jpg"
+  },
+  {
+    "file": "oil-strainer-view-a.jpg",
+    "partId": "MEP-OIL-01",
+    "partNumber": "114250-35070",
+    "url": "https://industrialenginesshop.com/cdn/shop/files/P30105A.jpg?v=1721031149",
+    "source": "https://industrialenginesshop.com/products/yanmar-oil-strainer",
+    "author": "Industrial Engines Shop",
+    "path": "/assets/components/mep-oil-01-real.jpg"
+  }
+]

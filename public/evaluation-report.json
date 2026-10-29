@@ -1,0 +1,102 @@
+{
+  "model": "DINOv2-small",
+  "dimensions": 384,
+  "method": "All captures encoded independently; cosine search over stored image vectors. Capture images excluded from reference index. Held-out ranking uses explicit equipment context (MEP-832A); full-catalog predictions are also reported.",
+  "heldOut": {
+    "total": 3,
+    "top1": 3,
+    "top3": 3
+  },
+  "cases": [
+    {
+      "fullCatalogPrediction": "DEMO-060",
+      "scope": "MEP-832A",
+      "expected": "MEP-AIR-01",
+      "capture": "/assets/captures/air-filter.jpg",
+      "predicted": "MEP-AIR-01",
+      "similarity": 0.7089904241376819,
+      "margin": 0.36688125548088996,
+      "top3": [
+        "MEP-AIR-01",
+        "MEP-FUEL-01",
+        "MEP-OIL-01"
+      ],
+      "accepted": true
+    },
+    {
+      "fullCatalogPrediction": "DEMO-060",
+      "scope": "MEP-832A",
+      "expected": "MEP-FUEL-01",
+      "capture": "/assets/captures/fuel-filter.jpg",
+      "predicted": "MEP-FUEL-01",
+      "similarity": 0.6862787900715285,
+      "margin": 0.38944447394030035,
+      "top3": [
+        "MEP-FUEL-01",
+        "MEP-AIR-01",
+        "MEP-OIL-01"
+      ],
+      "accepted": true
+    },
+    {
+      "fullCatalogPrediction": "MEP-OIL-01",
+      "scope": "MEP-832A",
+      "expected": "MEP-OIL-01",
+      "capture": "/assets/captures/oil-strainer.jpg",
+      "predicted": "MEP-OIL-01",
+      "similarity": 0.7827540526100588,
+      "margin": 0.5036069475587703,
+      "top3": [
+        "MEP-OIL-01",
+        "MEP-AIR-01",
+        "MEP-FUEL-01"
+      ],
+      "accepted": true
+    }
+  ],
+  "reference": {
+    "total": 149,
+    "top1": 149
+  },
+  "limitations": [
+    "The three field captures and three component reference images are AI-generated illustrations of sourced part records.",
+    "This is a small synthetic viewpoint test, not operational accuracy validation.",
+    "Visual similarity cannot establish interchangeability; confirm markings, configuration and current authorized publications."
+  ],
+  "internetUploads": {
+    "total": 3,
+    "top1": 3,
+    "cases": [
+      {
+        "file": "air-filter-altrad.jpg",
+        "expected": "MEP-AIR-01",
+        "type": "Internet photograph",
+        "predicted": "MEP-AIR-01",
+        "similarity": 0.6843203883332984,
+        "reliable": true,
+        "elapsedMs": 51,
+        "source": "https://altrad-belle.com/index_old.php?id=27992&p=part_detail"
+      },
+      {
+        "file": "fuel-filter-fleetfilter.jpg",
+        "expected": "MEP-FUEL-01",
+        "type": "Internet photograph",
+        "predicted": "MEP-FUEL-01",
+        "similarity": 0.7537152618876379,
+        "reliable": true,
+        "elapsedMs": 23,
+        "source": "https://www.fleetfilter.com/filter/33583.html"
+      },
+      {
+        "file": "oil-strainer-view-b.jpg",
+        "expected": "MEP-OIL-01",
+        "type": "Internet photograph, packaged component",
+        "predicted": "MEP-OIL-01",
+        "similarity": 0.6469906383435567,
+        "reliable": false,
+        "elapsedMs": 31,
+        "source": "https://industrialenginesshop.com/products/yanmar-oil-strainer"
+      }
+    ]
+  }
+}

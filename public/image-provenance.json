@@ -1,0 +1,78 @@
+{
+  "mode": "Built-in image_gen",
+  "manual": "Air Force TO 35C2-3-386-51W/IPB / TM 9-6115-639-13&P (30 April 2010), Distribution A",
+  "disclosure": "Generated MEP-832A images are illustrations; part identifiers are transcribed from the public manual. Geometry and operational accuracy are not validated.",
+  "assets": [
+    {
+      "name": "airReference",
+      "prompt": "Use case: photorealistic simulation. Asset type: component reference photograph for an aerospace ground equipment visual-search application. Primary request: create a hyperrealistic studio photograph of ONLY the small annular pleated air filter element shown as item 6 at lower left in the supplied technical diagram. Subject: short wide cylindrical ring filter, cream pleated paper around circumference, black rubber circular end seals, large circular hollow center, approximately 110mm diameter and 50mm depth. Composition: isolated one component at three-quarter angle on pale cool gray seamless surface, entire object visible filling 75% frame, soft realistic shadow. Lighting: precise neutral product photography, visible paper fibers and rubber texture, very sharp. Constraints: keep the item's ring geometry from the illustration; no housing, no other components, no labels or text, no diagram marks or numbers, no watermark. This is illustrative imagery, do not imply it is an actual manufacturer photo.",
+      "method": "Built-in image generation; public manual diagram or generated reference supplied as input",
+      "path": "/assets/components/air-filter.jpg"
+    },
+    {
+      "name": "airCapture",
+      "prompt": "Use case: photorealistic simulation. Asset type: independent field capture for visual component search. Show the EXACT same cream annular pleated air filter with black rubber end caps from the input, preserving all dimensions and materials. Change viewpoint to higher overhead looking through center, rotate component to lie flat on a worn dark navy maintenance mat atop a gray hangar workbench. A blurred olive drab generator housing in far background. Close smartphone photo, imperfect practical light, faint dust on rubber, entire filter sharp and fills 65% frame. Do not show any text, labels, part numbers, UI, symbols or watermark. One component only. Preserve geometry, change scene and viewpoint substantially.",
+      "method": "Built-in image generation; public manual diagram or generated reference supplied as input",
+      "path": "/assets/captures/air-filter.jpg"
+    },
+    {
+      "name": "fuelReference",
+      "prompt": "Use case: photorealistic simulation. Asset type: component reference photograph. Create a hyperrealistic studio photo of ONLY filter element item7 at upper right of the supplied exploded diagram, a squat cylindrical spin-on diesel fuel filter element with matte off-white painted metal canister, silver metal top with central threaded hole and ring of six small holes, black circular sealing gasket. Approximate diameter70mm height80mm. Three-quarter view on pale cool gray seamless background, whole object, sharp industrial materials and soft shadow, no head assembly or bowl. No labels, branding, text, numbers or watermark. Interpret diagram as illustrative physical reference.",
+      "method": "Built-in image generation; public manual diagram or generated reference supplied as input",
+      "path": "/assets/components/fuel-filter.jpg"
+    },
+    {
+      "name": "oilReference",
+      "prompt": "Use case: photorealistic simulation. Asset type: component reference photograph. Create a hyperrealistic studio photo of ONLY oil pump strainer item2 in supplied technical diagram. Small elongated black molded plastic oil screen basket with narrow cylindrical mesh/slotted cage body about90mm long, wider oval mounting flange at open end with one small bolt hole on lower tab and hollow round central opening, other end closed, sturdy internal ribs. Three-quarter side perspective, isolated pale cool gray seamless background, entire single component visible filling75% frame. Sharp black plastic and fine metallic screen detail, soft studio shadow. Exclude engine, bolt and o-ring; no text or labels, no diagram marks, no watermark.",
+      "method": "Built-in image generation; public manual diagram or generated reference supplied as input",
+      "path": "/assets/components/oil-strainer.jpg"
+    },
+    {
+      "name": "fuelCapture",
+      "prompt": "Use case: photorealistic simulation. Asset type: held-out field photo for component visual matching. Photograph the exact off-white cylindrical fuel filter from input reference with same proportions, six peripheral holes and central threaded port, black gasket. Change only camera perspective and setting: lying at an angle on dark blue maintenance mat, viewed from a lower side angle, round top and side visible. A technician's blue nitrile gloved fingers hold the lower edge. Real smartphone closeup, soft hangar light, light scuffs. Component fills70% of frame. No text, markings, UI or watermarks. Preserve component geometry.",
+      "method": "Built-in image generation; public manual diagram or generated reference supplied as input",
+      "path": "/assets/captures/fuel-filter.jpg"
+    },
+    {
+      "name": "oilCapture",
+      "prompt": "Use case: photorealistic simulation. Asset type: held-out field capture. Photograph the exact black elongated oil mesh strainer from input, preserving screen cage, ribs and asymmetric mounting tab with bolt hole. Change viewpoint significantly: the far closed end now points left and open flange faces camera from right, on worn blue hangar workbench mat with blurred tools in background, overhead practical light, faint oily sheen. Whole component in sharp focus filling70% of frame. Handheld smartphone realism. No text, part numbers, logos or watermarks. One component only.",
+      "method": "Built-in image generation; public manual diagram or generated reference supplied as input",
+      "path": "/assets/captures/oil-strainer.jpg"
+    },
+    {
+      "name": "unitHero",
+      "prompt": "Use case: photorealistic simulation. Asset type: wide hero photograph for Air Force ground-equipment visual search app. Create a cinematic but realistic photograph of the MEP-832A 3kW tactical quiet generator depicted in the provided government manual diagram: compact olive-drab skid-mounted box, sloped upper panels with rows of vents, grab handles, round analog control gauges on one end, exposed metal skid base, no trailer wheels. Keep the characteristic enclosure geometry. Place the generator on concrete in an aircraft maintenance hangar at blue hour. Low three-quarter view, generator to right half, deep navy background and subtle cool silver rim light, grounded utilitarian feel, no dramatic smoke. Wide 16:9 composition with dark negative space at left suitable for white text overlay. No soldiers, flags, aircraft logos, emblems, writing, UI or watermark.",
+      "method": "Built-in image generation; public manual diagram or generated reference supplied as input",
+      "path": "/assets/mep-832a-hangar.jpg"
+    }
+  ],
+  "internetReferences": [
+    {
+      "file": "air-filter-modern.jpg",
+      "partId": "MEP-AIR-01",
+      "partNumber": "114250-12581",
+      "url": "https://cdn11.bigcommerce.com/s-873ultu4xu/images/stencil/1280x1280/products/2069354/3474989/getimage__51013.1754086465.jpg?c=2",
+      "source": "https://shop.moderngroup.com/114250-12581-aftermarket-yanmar-diesel-filter-air/",
+      "author": "The Modern Shop / TotalSource",
+      "path": "/assets/components/mep-air-01-real.jpg"
+    },
+    {
+      "file": "fuel-filter-reference.jpg",
+      "partId": "MEP-FUEL-01",
+      "partNumber": "33583",
+      "url": "https://s7g10.scene7.com/is/image/mannhummel/33583-1?qlt=82&ts=1781262474899&dpr=off",
+      "source": "https://www.wixfilters.com/en-ph/catalog/results/product.html/33583_wix.html",
+      "author": "WIX Filters / MANN+HUMMEL",
+      "path": "/assets/components/mep-fuel-01-real.jpg"
+    },
+    {
+      "file": "oil-strainer-view-a.jpg",
+      "partId": "MEP-OIL-01",
+      "partNumber": "114250-35070",
+      "url": "https://industrialenginesshop.com/cdn/shop/files/P30105A.jpg?v=1721031149",
+      "source": "https://industrialenginesshop.com/products/yanmar-oil-strainer",
+      "author": "Industrial Engines Shop",
+      "path": "/assets/components/mep-oil-01-real.jpg"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+.git
+.model-cache
+.demo-data
+node_modules
+.next
+data/contact-*.jpg
+data/image-candidates.json
+data/wiki-files.json
+data/photo-metadata.json
+data/extra-candidates.json
+public/models
+public/vendor
